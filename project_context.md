@@ -16,17 +16,21 @@ Digitize the book **"System Design with Ada (Buhr, R. J. A)"** from a scanned PD
 - **Source**: `source/System design with Ada (Buhr, R. J. A).pdf`
 - **Working Directory**: `/home/chuck/git/system-design-with-ada--buhr/`
 - **Output Structure**:
-  - `chapters/`: Contains raw PNG page splits organized by chapter.
-  - `figures/`: Contains generated SVGs and cropped PNGs. This is the **source of truth** for illustrations.
-  - `*.md`: Finalized chapter text with correct image links.
-  - `img.md`: Reference file mapping illustrations to their original source pages.
+  - `chapters-source-images/`: Contains raw PNG page splits organized by chapter.
+  - `book/`: Contains the digitized book content.
+    - `chapter*.md`: Finalized chapter text.
+    - `figures/`: Extracted SVGs and cropped PNGs.
+    - `metadata.yaml`: Book metadata.
+    - `build_epub.sh`: Script to generate the EPUB.
+    - `img.md`: Reference mapping figures to source pages.
+  - `README.md`: Project root documentation and Table of Contents.
 
 ## Actions Taken
 
 ### 1. PDF Processing
 
 - Split the source PDF into individual PNG images using `pdftoppm`.
-- Organized the flat list of page images into chapter-specific directories (`chapters/chapter_01/`, etc.) using a Bash script (`organize_chapters.sh`).
+- Organized the flat list of page images into chapter-specific directories (`chapters-source-images/chapter_01/`, etc.).
 
 ### 2. Text Verification & Formatting
 
@@ -43,21 +47,21 @@ Digitize the book **"System Design with Ada (Buhr, R. J. A)"** from a scanned PD
 
 ### 4. Figure Audit and Synchronization
 
-- **Source of Truth**: Established `figures/` as the definitive collection of images.
-- **Reference Map**: Created `img.md` to track which original page each figure was extracted from.
-- **Link Auditing**: Systematically processed `chapter01.md` through `chapter07.md`:
-  - Replaced all `(Visual Description: ...)` placeholders with Markdown image links.
-  - Verified every image link against the file system.
-  - Handled split figures (e.g., `fig_X_Y_a.png`, `fig_X_Y_b.png`) by inserting multiple links where appropriate.
-  - Removed links to missing files or code-only figures.
-  - Fixed filenames (e.g., `fig_1_1..png` -> `fig_1_1.png`).
+- **Source of Truth**: `book/figures/` is the definitive collection of images.
+- **Reference Map**: `book/img.md` tracks which original page each figure was extracted from.
+- **Link Auditing**: Verified every image link in the markdown chapters against the file system.
+
+### 5. Reorganization
+
+- Moved raw page images to `chapters-source-images/`.
+- Moved all book content (markdown, figures, scripts) into `book/`.
 
 ## Workflows & Lessons Learned
 
 ### Processing a Chapter
 
 1.  **Read Markdown**: Identify where figures are referenced and what content is missing or requires verification.
-2.  **Locate Source**: Find the corresponding raw page image in `chapters/chapter_XX/`.
+2.  **Locate Source**: Find the corresponding raw page image in `chapters-source-images/chapter_XX/`.
 3.  **Extract/Generate Figure**:
     - If it's a standard symbol -> Generate SVG code.
     - If it's a complex diagram -> Use `imagemagick` to crop the region from the page PNG.

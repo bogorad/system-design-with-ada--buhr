@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Define output filename
-OUTPUT="System_Design_with_Ada.epub"
+OUTPUT="../System_Design_with_Ada.epub"
 
 # Define chapter list in order
 CHAPTERS=(

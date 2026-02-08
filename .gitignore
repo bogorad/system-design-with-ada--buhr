@@ -1,1 +1,9 @@
-chapters/
+# Ignore temporary files
+temp/
+tmp/
+
+# Ignore the source images directory
+chapters-source-images/
+
+# Keep the book content
+!book/
