@@ -261,11 +261,11 @@ Another approach, shown in Figures 3.14(c) and 3.14(d), is to change the package
 
 ![Figure 3.14(c) Equivalent Active Package](figures/fig_3_14_c.png)
 
-![Figure 3.14(d) Scheduler Task](figures/fig_3_14_de.png)
+![Figure 3.14(d) Scheduler Task](figures/fig_3_14_d.png)
 
 A final approach, shown in Figure 3.14(e), is to leave the original package untouched and to use a separate scheduler task which allocates the package to user tasks as required: the user tasks must agree that they will use the package only after calling the scheduler.
 
-![Figure 3.14(e) System with Original Package Unchanged](figures/fig_3_14_de.png)
+![Figure 3.14(e) System with Original Package Unchanged](figures/fig_3_14_e.png)
 
 Is one of the solutions of Figure 3.14 preferred? The solution of Figure 3.14(b), which uses a single server task, is attractive because it combines intuitive clarity with safety. The solution of Figure 3.14(c) is attractive because it preserves the facade of the original package. Finally, Figure 3.14(e) provides a more complicated interface to user tasks than seems desirable and is potentially unsafe because of the lack of direct protection of the package contents from use by unauthorized tasks.
 
