@@ -2,8 +2,8 @@
 temp/
 tmp/
 
-# Ignore the source images directory
 chapters-source-images/
+source/
 
 # Keep the book content
 !book/
