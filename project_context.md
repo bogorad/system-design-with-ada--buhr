@@ -6,7 +6,6 @@ Digitize the book **"System Design with Ada (Buhr, R. J. A)"** from a scanned PD
 
 ## Environment & Constraints
 
-- **OS**: NixOS.
 - **Command Execution**: Use `nix run` or `nix shell` for system tools (e.g., `poppler-utils`, `imagemagick`).
 - **Scripting Constraint**: **No Python allowed**. Use Bash/Coreutils or Golang for automation.
 - **OCR Strategy**: Do not use local OCR (Tesseract). Rely on Cloud LLM (Gemini 3 Pro) for text transcription, verification, and formatting.
